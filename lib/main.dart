@@ -8,14 +8,10 @@ import 'package:get_storage/get_storage.dart';
 import 'modules/bindings/home_binding.dart';
 import 'modules/views/home_view.dart';
 import 'routes/app_pages.dart';
-import 'dart:ui_web' as ui;
 
 Future<void> main() async {
   await GetStorage.init();
   await initializeDateFormatting();
-  ui.debugEmulateFlutterTesterEnvironment;
-  ui.bootstrapEngine;
-  ui.setPluginHandler;
   runApp(const MyApp());
 }
 
