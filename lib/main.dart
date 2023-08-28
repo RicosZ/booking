@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
       //showPerformanceOverlay: true, //กดเปิดเพื่อดูประสิทธิภาพ ms per frame
       theme: Palette.themeData,
       home: const HomeView(),
+      initialRoute: '/home',
       initialBinding: HomeBinding(),
       getPages: AppPage.routes,
       fallbackLocale:
