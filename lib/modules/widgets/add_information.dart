@@ -15,7 +15,7 @@ class AddInformationPopup {
           child: Obx(
             () => Container(
                 constraints:
-                    const BoxConstraints(maxHeight: 550, maxWidth: 820),
+                    const BoxConstraints(maxHeight: 560, maxWidth: 820),
                 padding: const EdgeInsets.all(32),
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(15)),
@@ -46,41 +46,64 @@ class AddInformationPopup {
                               Wrap(
                                 crossAxisAlignment: WrapCrossAlignment.start,
                                 children: [
-                                  Text('$i. ชื่อ-สกุล: ',
-                                      style: NotoSansThai.h3
-                                          .copyWith(color: Palette.black)),
-                                  SizedBox(
-                                    width: 240,
-                                    child: customFormTextField(
-                                        key: 'name$i',
-                                        decoration: customInputDecoration(
-                                            hintText: 'ชื่อ-สกุล')),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 8),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text('$i. ชื่อ-สกุล:',
+                                            style: NotoSansThai.h3
+                                                .copyWith(color: Palette.black)),
+                                        SizedBox(
+                                          width: 240,
+                                          child: customFormTextField(
+                                              key: 'name$i',
+                                              decoration: customInputDecoration(
+                                                  hintText: 'ชื่อ-สกุล')),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  const SizedBox(
-                                    width: 8,
+                                  
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 8),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text('รุ่น:',
+                                            style: NotoSansThai.h3
+                                                .copyWith(color: Palette.black)),
+                                        SizedBox(
+                                          width: 120,
+                                          child: customFormTextField(
+                                              key: 'gen$i',
+                                              decoration: customInputDecoration(
+                                                  hintText: 'รุ่น')),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  Text('รุ่น: ',
-                                      style: NotoSansThai.h3
-                                          .copyWith(color: Palette.black)),
-                                  SizedBox(
-                                    width: 120,
-                                    child: customFormTextField(
-                                        key: 'gen$i',
-                                        decoration: customInputDecoration(
-                                            hintText: 'รุ่น')),
-                                  ),
-                                  const SizedBox(
-                                    width: 8,
-                                  ),
-                                  Text('เบอร์โทรศัพท์: ',
-                                      style: NotoSansThai.h3
-                                          .copyWith(color: Palette.black)),
-                                  SizedBox(
-                                    width: 120,
-                                    child: customFormTextField(
-                                        key: 'tel$i',
-                                        decoration: customInputDecoration(
-                                            hintText: 'เบอร์โทรศัพท์')),
+                                  
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 8),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text('เบอร์โทรศัพท์:',
+                                            style: NotoSansThai.h3
+                                                .copyWith(color: Palette.black)),
+                                        SizedBox(
+                                          width: 120,
+                                          child: customFormTextField(
+                                              key: 'tel$i',
+                                              decoration: customInputDecoration(
+                                                  hintText: 'เบอร์โทรศัพท์')),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
@@ -95,7 +118,7 @@ class AddInformationPopup {
                         children: [
                           Container(
                             padding: const EdgeInsets.all(8),
-                            width: 160,
+                            width: 120,
                             height: 40,
                             decoration: BoxDecoration(
                                 border:

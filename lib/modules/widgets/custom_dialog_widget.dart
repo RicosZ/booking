@@ -137,8 +137,8 @@ class CustomDialogWidget extends StatelessWidget {
                 SizedBox(height: dialogTpye == DialogTpye.success ? 16 : 8),
                 Text(
                   dialogTpye == DialogTpye.success
-                      ? labelSuccessOrError ?? 'สำเร็จ!'
-                      : labelSuccessOrError ?? 'มีผู้จองแล้ว!',
+                      ? labelSuccessOrError ?? 'จองโต๊ะสำเร็จ!'
+                      : labelSuccessOrError ?? 'โต๊ะถูกจองแล้วจองแล้ว!',
                   style: NotoSansThai.h3.copyWith(color: Palette.black),
                 ),
                 Column(
