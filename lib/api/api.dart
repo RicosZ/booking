@@ -17,7 +17,11 @@ class Api {
         // return jsonResponse.map((e) => CallData.fromJson(e)).toList();
         return Booked.fromJson(response.data);
       }
-    } catch (e) {}
+    } catch (e) {
+      Booked(
+        success: false,
+      );
+    }
     return Booked(
       success: false,
     );

@@ -1,4 +1,3 @@
-import 'package:booking/modules/bindings/admin_binding.dart';
 import 'package:booking/modules/views/admin_view.dart';
 import 'package:get/get.dart';
 import '../modules/bindings/home_binding.dart';
@@ -13,9 +12,9 @@ class AppPage {
       binding: HomeBinding(),
     ),
     GetPage(
-      name: Routes.admin,
+      name: Routes.inspect,
       page: () => const AdminView(),
-      binding: AdminBinding(),
+      binding: HomeBinding(),
     )
   ];
 }

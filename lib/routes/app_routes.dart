@@ -1,9 +1,9 @@
 abstract class Routes {
   static const home = _Paths.home;
-  static const admin = _Paths.admin;
+  static const inspect = _Paths.inspect;
 }
 
 abstract class _Paths {
   static const home = '/home';
-  static const admin = '/admin';
+  static const inspect = '/inspect';
 }

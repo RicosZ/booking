@@ -14,7 +14,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xffE4E4D0),
       body: GestureDetector(
         child: InteractiveViewer(
@@ -35,14 +35,14 @@ class HomeView extends GetView<HomeController> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Container(
-                      constraints:
-                          const BoxConstraints(maxWidth: 1200, maxHeight: 400),
+                      constraints: const BoxConstraints(maxHeight: 560),
+                      width: 1200,
                       child: Image.network(
-                        'https://marketplace.canva.com/EAE7AbabFNY/1/0/1600w/canva-blue-gold-elegant-minimalist-digital-marketer-linkedin-banner-yFznKtTfH0U.jpg',
+                        'https://scontent.fbkk10-1.fna.fbcdn.net/v/t39.30808-6/353829046_823157512848842_7114001567684340747_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeEXemzmByjpNIeLTFpXkeQJnXFwEbMZqCCdcXARsxmoIHppAICaFneaCX1Z7ewlFWyhBGpLSEaFeAVgTQWhSfdh&_nc_ohc=8_Q2kbgP3GYAX_jX6LE&_nc_ht=scontent.fbkk10-1.fna&oh=00_AfCcaKUQFsTA8VaRMsh-yi9oXPadrcN_djHsKKqKQBfWrA&oe=64F3F328',
                         fit: BoxFit.fill,
                       ),
                     ),
-                    const SizedBox(height: 32),
+                    const SizedBox(height: 48),
                     Container(
                       constraints: const BoxConstraints(maxWidth: 1200),
                       child: Row(
@@ -70,7 +70,8 @@ class HomeView extends GetView<HomeController> {
                               )
                             ],
                           ),
-                          Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               SizedBox(
                                 width: 300,
@@ -184,7 +185,7 @@ class HomeView extends GetView<HomeController> {
                                                                                   : j < 6
                                                                                       ? j + ((i - 1) * 10)
                                                                                       : j - 1 + ((i - 1) * 10))
-                                                                          ? AddInformationPopup().add(
+                                                                          ? InformationPopup().add(
                                                                               index: i < 5
                                                                                   ? j < 6
                                                                                       ? j + (i * 10)
