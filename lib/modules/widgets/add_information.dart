@@ -18,7 +18,7 @@ class InformationPopup {
           child: Obx(
             () => Container(
                 width: 640,
-                height: 560,
+                height: 760,
                 padding: const EdgeInsets.all(32),
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(15)),
@@ -28,9 +28,32 @@ class InformationPopup {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('โต๊ะที่ $index',
-                          style:
-                              NotoSansThai.h1.copyWith(color: Palette.black)),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('โต๊ะที่ $index',
+                              style: NotoSansThai.h1
+                                  .copyWith(color: Palette.black)),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                  'ชื่อบัญชี สมาคมศิษย์เก่าเภสัชศาสตร์ ม.ขอนแก่น',
+                                  style: NotoSansThai.largeLabel
+                                      .copyWith(color: Palette.black)),
+                              Text('ธนาคารไทยพาณิชย์',
+                                  style: NotoSansThai.largeLabel
+                                      .copyWith(color: Palette.black)),
+                              Text('บัญชีเลขที่ 5512887508',
+                                  style: NotoSansThai.largeLabel
+                                      .copyWith(color: Palette.black)),
+                              Text('จำนวนเงิน 10,000 บาท',
+                                  style: NotoSansThai.largeLabel
+                                      .copyWith(color: Palette.black)),
+                            ],
+                          ),
+                        ],
+                      ),
                       const SizedBox(height: 16),
                       Row(
                         children: [
@@ -499,9 +522,9 @@ class InformationPopup {
                 Container(
                   alignment: Alignment.center,
                   height: 300,
-                  child: controller.data[index-1].slip! != ''
+                  child: controller.data[index - 1].slip! != ''
                       ? Image.network(
-                          controller.data[index-1].slip!,
+                          controller.data[index - 1].slip!,
                           // fit: BoxFit.fitHeight,
                         )
                       : Container(),
