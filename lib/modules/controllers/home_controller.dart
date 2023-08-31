@@ -149,7 +149,6 @@ class HomeController extends GetxController {
   Future<void> downloadImage({required String imagePath}) async {
     ByteData imageData = await rootBundle.load(imagePath);
     await WebImageDownloader.downloadImageFromUInt8List(
-        name: imagePath.split('/')[2],
-        uInt8List: imageData.buffer.asUint8List());
+        name: 'Ticket.png', uInt8List: imageData.buffer.asUint8List());
   }
 }

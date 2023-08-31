@@ -460,7 +460,7 @@ class InformationPopup {
                             backgroundColor: Palette.white),
                         onPressed: () async {
                           controller.downloadImage(
-                              imagePath: 'assets/ticket/Ticket_$index.png');
+                              imagePath: 'assets/ticket/Ticket_${index-1}.png');
                         },
                         child: Row(
                           children: [
@@ -480,7 +480,7 @@ class InformationPopup {
                 ),
                 const SizedBox(height: 16),
                 Image.asset(
-                  '/assets/ticket/Ticket_$index.png',
+                  '/assets/ticket/Ticket_${index-1}.png',
                   fit: BoxFit.fitHeight,
                 ),
                 const SizedBox(height: 8),
