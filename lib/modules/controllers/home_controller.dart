@@ -66,22 +66,20 @@ class HomeController extends GetxController {
   var isAdding = false.obs;
   addInformation({required int index}) async {
     isAdding(true);
-    await refreshInformation();
     if (checkEmptyTable(index: index)) {
       var booker = ''.obs;
       for (var i = 1; i <= 10; i++) {
         booker.value +=
             '${key.currentState?.fields['name$i']?.value},${key.currentState?.fields['gen$i']?.value},${key.currentState?.fields['tel$i']?.value}/';
       }
-      await uploadImage(bytes: imgByte!);
-      await worksheet!.values.map.allRows().then((value) {
-        if (value![1].isEmpty) {
+      await worksheet!.values.map.allRows().then((value) async {
+        if (value![index - 1]['booker'] == '') {
+          await uploadImage(bytes: imgByte!);
           worksheet!.values.insertRow(index + 1, [
             index,
             booker.value,
             imageUrl.value,
           ]).then((value) async => refreshInformation());
-          isAdding(false);
           Get.close(2);
           InformationPopup().ticket(index: index);
         } else {
@@ -92,6 +90,7 @@ class HomeController extends GetxController {
           ));
         }
       });
+      isAdding(false);
     } else {
       Get.back();
       Get.dialog(const CustomDialogWidget(

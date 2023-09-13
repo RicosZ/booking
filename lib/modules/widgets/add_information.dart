@@ -31,7 +31,8 @@ class InformationPopup {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Align(
                                 alignment: Alignment.centerLeft,
@@ -329,7 +330,10 @@ class InformationPopup {
                 )),
           ),
         ),
-      ).then((value) => controller.imgName(''));
+      ).then((value) => {
+            controller.imgName(''),
+            controller.isPickedImage(false),
+          });
 
   inspect({required int index, required bool inspect}) => Get.dialog(
         Dialog(
