@@ -74,14 +74,24 @@ class HomeController extends GetxController {
             '${key.currentState?.fields['name$i']?.value},${key.currentState?.fields['gen$i']?.value},${key.currentState?.fields['tel$i']?.value}/';
       }
       await uploadImage(bytes: imgByte!);
-      worksheet!.values.insertRow(index + 1, [
-        index,
-        booker.value,
-        imageUrl.value,
-      ]).then((value) async => refreshInformation());
-      isAdding(false);
-      Get.close(2);
-      InformationPopup().ticket(index: index);
+      await worksheet!.values.map.allRows().then((value) {
+        if (value![1].isEmpty) {
+          worksheet!.values.insertRow(index + 1, [
+            index,
+            booker.value,
+            imageUrl.value,
+          ]).then((value) async => refreshInformation());
+          isAdding(false);
+          Get.close(2);
+          InformationPopup().ticket(index: index);
+        } else {
+          refreshInformation();
+          Get.back();
+          Get.dialog(const CustomDialogWidget(
+            dialogTpye: DialogTpye.error,
+          ));
+        }
+      });
     } else {
       Get.back();
       Get.dialog(const CustomDialogWidget(

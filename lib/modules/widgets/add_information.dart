@@ -28,29 +28,64 @@ class InformationPopup {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text('โต๊ะที่ $index',
-                              style: NotoSansThai.h1
-                                  .copyWith(color: Palette.black)),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
+                          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                  'ชื่อบัญชี สมาคมศิษย์เก่าเภสัชศาสตร์ ม.ขอนแก่น',
-                                  style: NotoSansThai.largeLabel
-                                      .copyWith(color: Palette.black)),
-                              Text('ธนาคารไทยพาณิชย์',
-                                  style: NotoSansThai.largeLabel
-                                      .copyWith(color: Palette.black)),
-                              Text('บัญชีเลขที่ 5512887508',
-                                  style: NotoSansThai.largeLabel
-                                      .copyWith(color: Palette.black)),
-                              Text('จำนวนเงิน 10,000 บาท',
-                                  style: NotoSansThai.largeLabel
-                                      .copyWith(color: Palette.black)),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text('โต๊ะที่ $index',
+                                    style: NotoSansThai.h1
+                                        .copyWith(color: Palette.black)),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Palette.white,
+                                  borderRadius: BorderRadius.circular(12),
+                                  boxShadow: [Palette.shadowButtonX],
+                                ),
+                                child: Material(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Get.back();
+                                    },
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: const Padding(
+                                      padding: EdgeInsets.all(8),
+                                      child: Icon(
+                                        Icons.close,
+                                        color: Palette.greyIcon,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ],
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text('ชื่อบัญชี สมาคมศิษย์เก่าเภสัชศาสตร์',
+                                    style: NotoSansThai.largeLabel
+                                        .copyWith(color: Palette.black)),
+                                Text('ม.ขอนแก่น',
+                                    style: NotoSansThai.largeLabel
+                                        .copyWith(color: Palette.black)),
+                                Text('ธนาคารไทยพาณิชย์',
+                                    style: NotoSansThai.largeLabel
+                                        .copyWith(color: Palette.black)),
+                                Text('บัญชีเลขที่ 5512887508',
+                                    style: NotoSansThai.largeLabel
+                                        .copyWith(color: Palette.black)),
+                                Text('จำนวนเงิน 10,000 บาท',
+                                    style: NotoSansThai.largeLabel
+                                        .copyWith(color: Palette.black)),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -172,7 +207,7 @@ class InformationPopup {
                             children: [
                               Container(
                                 padding: const EdgeInsets.all(8),
-                                width: 120,
+                                width: 160,
                                 height: 40,
                                 decoration: BoxDecoration(
                                     border: Border.all(
@@ -286,7 +321,7 @@ class InformationPopup {
                             child: Text(
                               'จองโต๊ะ',
                               style: NotoSansThai.normal
-                                  .copyWith(color: Palette.black),
+                                  .copyWith(color: Palette.white),
                             )),
                       )
                     ],
@@ -294,9 +329,9 @@ class InformationPopup {
                 )),
           ),
         ),
-      );
+      ).then((value) => controller.imgName(''));
 
-  inspect({required int index}) => Get.dialog(
+  inspect({required int index, required bool inspect}) => Get.dialog(
         Dialog(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
@@ -317,13 +352,21 @@ class InformationPopup {
                       Text('โต๊ะที่ $index',
                           style:
                               NotoSansThai.h1.copyWith(color: Palette.black)),
-                      CustomElevatedButton(
-                        backgroundColor: Palette.mainGreen,
-                        label: 'ดูสลิป',
-                        onPressed: () {
-                          slip(index: index);
-                        },
-                      )
+                      inspect
+                          ? CustomElevatedButton(
+                              backgroundColor: Palette.mainGreen,
+                              label: 'ดูสลิป',
+                              onPressed: () {
+                                slip(index: index);
+                              },
+                            )
+                          : CustomElevatedButton(
+                              backgroundColor: Palette.mainGreen,
+                              label: 'ดูตั๋ว',
+                              onPressed: () {
+                                ticket(index: index);
+                              },
+                            )
                     ],
                   ),
                   const SizedBox(height: 16),
@@ -429,7 +472,7 @@ class InformationPopup {
                         child: Text(
                           'ปิด',
                           style: NotoSansThai.normal
-                              .copyWith(color: Palette.black),
+                              .copyWith(color: Palette.white),
                         )),
                   )
                 ],
@@ -460,7 +503,8 @@ class InformationPopup {
                             backgroundColor: Palette.white),
                         onPressed: () async {
                           controller.downloadImage(
-                              imagePath: 'assets/ticket/Ticket_${index-1}.png');
+                              imagePath:
+                                  'assets/ticket/Ticket_${index - 1}.png');
                         },
                         child: Row(
                           children: [
@@ -480,7 +524,7 @@ class InformationPopup {
                 ),
                 const SizedBox(height: 16),
                 Image.asset(
-                  '/assets/ticket/Ticket_${index-1}.png',
+                  '/assets/ticket/Ticket_${index - 1}.png',
                   fit: BoxFit.fitHeight,
                 ),
                 const SizedBox(height: 8),

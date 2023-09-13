@@ -36,8 +36,8 @@ class AdminView extends GetView<HomeController> {
                     Container(
                       constraints: const BoxConstraints(maxHeight: 560),
                       width: 1200,
-                      child: Image.network(
-                        'https://scontent.fbkk10-1.fna.fbcdn.net/v/t39.30808-6/353829046_823157512848842_7114001567684340747_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeEXemzmByjpNIeLTFpXkeQJnXFwEbMZqCCdcXARsxmoIHppAICaFneaCX1Z7ewlFWyhBGpLSEaFeAVgTQWhSfdh&_nc_ohc=8_Q2kbgP3GYAX_jX6LE&_nc_ht=scontent.fbkk10-1.fna&oh=00_AfCcaKUQFsTA8VaRMsh-yi9oXPadrcN_djHsKKqKQBfWrA&oe=64F3F328',
+                      child: Image.asset(
+                        'assets/image/banner.jpg',
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -178,6 +178,7 @@ class AdminView extends GetView<HomeController> {
                                                                         () async {
                                                                       //view
                                                                       InformationPopup().inspect(
+                                                                        inspect: true,
                                                                           index: i < 5
                                                                               ? j < 6
                                                                                   ? j + (i * 10)
