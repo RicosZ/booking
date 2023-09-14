@@ -75,21 +75,31 @@ class HomeController extends GetxController {
       await worksheet!.values.map.allRows().then((value) async {
         if (value![index - 1]['booker'] == '') {
           await uploadImage(bytes: imgByte!);
-          worksheet!.values.insertRow(index + 1, [
+          await worksheet!.values.insertRow(index + 1, [
             index,
             booker.value,
             imageUrl.value,
-          ]).then((value) async => refreshInformation());
-          Get.close(2);
-          InformationPopup().ticket(index: index);
+          ]).then((value) async => {
+                await worksheet!.values.map.allRows().then((value) async {
+                  if (value![index - 1]['booker'] == booker.value) {
+                    Get.close(2);
+                    InformationPopup().ticket(index: index);
+                  } else {
+                    Get.back();
+                    Get.dialog(const CustomDialogWidget(
+                      dialogTpye: DialogTpye.error,
+                    ));
+                  }
+                })
+              });
         } else {
-          refreshInformation();
           Get.back();
           Get.dialog(const CustomDialogWidget(
             dialogTpye: DialogTpye.error,
           ));
         }
       });
+      await refreshInformation();
       isAdding(false);
     } else {
       Get.back();
